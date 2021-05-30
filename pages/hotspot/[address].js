@@ -3,7 +3,21 @@ import { useRouter } from "next/router";
 export default function Post({ data }) {
   const router = useRouter();
   const { address } = router.query;
-  const hotspot = data.data
+  const hotspot = data.details.data;
+  
+  console.log(hotspot);
+
+  function handleBookmark(e) {
+    e.preventDefault();
+
+    window.localStorage.setItem(
+      e.target[0].value ? e.target[0].value : hotspot.name,
+      JSON.stringify({
+        label: e.target[0].value ? e.target[0].value : hotspot.name,
+        data: hotspot,
+      })
+    );
+  }
 
   return (
     <>
@@ -29,15 +43,28 @@ export default function Post({ data }) {
           {hotspot.geocode.long_state}, {hotspot.geocode.long_country}
         </p>
       </details>
+
+      <form onSubmit={handleBookmark}>
+        <input type="text" name="hotspotAddress" id="hotspotAddress" />
+        <button type="submit">Save</button>
+      </form>
     </>
   );
 }
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(
+  const details = await fetch(
     `https://api.helium.io/v1/hotspots/${params.address}`
-  )
-  const data = await res.json();
+  );
+
+  const witnesses = await fetch(
+    `https://api.helium.io/v1/hotspots/${params.address}/witnesses`
+  );
+
+  const data = {
+    details: await details.json(),
+    withnesses: await witnesses.json(),
+  };
 
   return { props: { data } };
 }

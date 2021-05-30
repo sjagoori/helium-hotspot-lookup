@@ -1,9 +1,13 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const router = useRouter();
+  const [saves, setSaves] = useState([]);
+
+  // console.log(reactLocalStorage);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -12,6 +16,14 @@ export default function Home() {
       pathname: `hotspot/${hotspotAddress}`,
     });
   }
+
+  useEffect(()=>{
+    Object.values(localStorage).map(key => { 
+      setSaves(saves => saves = localStorage[key])
+    });
+    console.log(saves);  
+  })
+
 
   return (
     <div className={styles.container}>
