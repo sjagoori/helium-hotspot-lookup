@@ -21,18 +21,23 @@ export default function Post({ data }) {
     );
   }
 
-  // console.log(data);
+  console.log(data);
 
   return (
     <main>
       <Details data={data.details.data} />
-      <Rewards data={data.rewards} />
+      <Rewards
+        data={data.rewards}
+        price={new Intl.NumberFormat("en-US").format(data.price.data.price / 100000000)}
+      />
       <Witness data={data.witnesses.data} />
     </main>
   );
 }
 
 export async function getServerSideProps({ params }) {
+  const price = await fetch(`https://api.helium.io/v1/oracle/prices/current`);
+
   const details = await fetch(
     `https://api.helium.io/v1/hotspots/${params.address}`
   );
@@ -66,6 +71,7 @@ export async function getServerSideProps({ params }) {
   );
 
   const data = {
+    price: await price.json(),
     details: await details.json(),
     witnesses: await witnesses.json(),
     rewards: {
