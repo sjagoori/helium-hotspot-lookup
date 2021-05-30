@@ -5,3 +5,9 @@ module.exports = withPWA({
     dest: "public",
   },
 });
+
+module.exports = {
+  future: {
+    webpack5: true,
+  },
+};
