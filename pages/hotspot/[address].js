@@ -21,12 +21,12 @@ export default function Post({ data }) {
     );
   }
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <main>
       <Details data={data.details.data} />
-      <Rewards data={data.rewards.data} />
+      <Rewards data={data.rewards} />
       <Witness data={data.witnesses.data} />
     </main>
   );
@@ -41,14 +41,38 @@ export async function getServerSideProps({ params }) {
     `https://api.helium.io/v1/hotspots/${params.address}/witnesses`
   );
 
-  const rewards = await fetch(
-    `https://api.helium.io/v1/hotspots/${params.address}/rewards/sum`
+  const rewardsToday = await fetch(
+    `https://api.helium.io/v1/hotspots/${params.address}/rewards/sum?min_time=${
+      new Date(new Date().setDate(new Date().getDate() - 0))
+        .toISOString()
+        .split("T")[0]
+    }`
+  );
+
+  const rewardsWeekly = await fetch(
+    `https://api.helium.io/v1/hotspots/${params.address}/rewards/sum?min_time=${
+      new Date(new Date().setDate(new Date().getDate() - 7))
+        .toISOString()
+        .split("T")[0]
+    }`
+  );
+
+  const rewardsMonthly = await fetch(
+    `https://api.helium.io/v1/hotspots/${params.address}/rewards/sum?min_time=${
+      new Date(new Date().setDate(new Date().getDate() - 30))
+        .toISOString()
+        .split("T")[0]
+    }`
   );
 
   const data = {
     details: await details.json(),
     witnesses: await witnesses.json(),
-    rewards: await rewards.json(),
+    rewards: {
+      today: await rewardsToday.json(),
+      weekly: await rewardsWeekly.json(),
+      monthly: await rewardsMonthly.json(),
+    },
   };
 
   return { props: { data } };
