@@ -1,5 +1,7 @@
-export default () => (
-  <>
-    <h1>You're offline</h1>
-  </>
-);
+export default function Offline() {
+  return (
+    <>
+      <h1>You're offline</h1>
+    </>
+  );
+}
