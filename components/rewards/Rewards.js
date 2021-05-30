@@ -1,6 +1,6 @@
-import Header from "../header/header";
+import Header from "../header/Header";
 
-export default function Rewards(props){
+export default function Rewards(props) {
   return (
     <section>
       <Header label="Rewards" />
