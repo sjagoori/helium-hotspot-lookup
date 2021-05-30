@@ -1,11 +1,13 @@
 import { useRouter } from "next/router";
+import Details from "components/details/Details";
+import Rewards from "components/rewards/Rewards";
+import Witness from "components/witness/Witness";
+import React from "react";
+const DataContext = React.createContext("light");
 
 export default function Post({ data }) {
   const router = useRouter();
   const { address } = router.query;
-  const hotspot = data.details.data;
-  
-  console.log(hotspot);
 
   function handleBookmark(e) {
     e.preventDefault();
@@ -19,36 +21,14 @@ export default function Post({ data }) {
     );
   }
 
+  console.log(data);
+
   return (
-    <>
-      <h1>Hotspot</h1>
-      <p>name: {hotspot.name}</p>
-      <p>address: {hotspot.address}</p>
-      <p>
-        added on: {new Date(hotspot.timestamp_added).toLocaleDateString()} -{" "}
-        {new Date(hotspot.timestamp_added).toLocaleTimeString()}
-      </p>
-
-      <p>gain: {hotspot.gain}</p>
-
-      <p>owner: {hotspot.owner}</p>
-      <p>mode: {hotspot.mode}</p>
-
-      <details>
-        <legend>location</legend>
-        <p>
-          {hotspot.geocode.short_street}, {hotspot.geocode.long_city}
-        </p>
-        <p>
-          {hotspot.geocode.long_state}, {hotspot.geocode.long_country}
-        </p>
-      </details>
-
-      <form onSubmit={handleBookmark}>
-        <input type="text" name="hotspotAddress" id="hotspotAddress" />
-        <button type="submit">Save</button>
-      </form>
-    </>
+    <main>
+      <Details data={data.details.data} />
+      <Rewards data={data.rewards.data} />
+      <Witness data={data.witnesses.data} />
+    </main>
   );
 }
 
@@ -61,9 +41,14 @@ export async function getServerSideProps({ params }) {
     `https://api.helium.io/v1/hotspots/${params.address}/witnesses`
   );
 
+  const rewards = await fetch(
+    `https://api.helium.io/v1/hotspots/${params.address}/rewards/sum`
+  );
+
   const data = {
     details: await details.json(),
-    withnesses: await witnesses.json(),
+    witnesses: await witnesses.json(),
+    rewards: await rewards.json(),
   };
 
   return { props: { data } };
