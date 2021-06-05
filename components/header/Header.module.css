@@ -1,5 +1,6 @@
 .header {
-  font-size: 4em;
+  font-size: 2em;
   margin: 0;
-  margin-left: -.5em;
+  border-bottom: 7px solid #0ACE82;
+  width: max-content;
 }
