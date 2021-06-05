@@ -1,9 +1,10 @@
 import Header from '../header/Header'
+import Section from '../section/Section'
 
-export default function Details(props) {  
+export default function Details(props) {
   return (
-    <section>
-      <Header label="Details"/>
+    <Section>
+      <Header label="Details" />
       <h2>{props.data.name}</h2>
       <p>
         {props.data.geocode.long_street}, {props.data.geocode.long_state}
@@ -11,6 +12,6 @@ export default function Details(props) {
       <p>
         {props.data.geocode.long_city}, {props.data.geocode.long_country}
       </p>
-    </section>
+    </Section>
   );
 }
