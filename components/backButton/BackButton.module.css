@@ -1,0 +1,23 @@
+.container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  width: 40px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  transition: .1s;
+}
+
+.container svg {
+  fill: grey
+}
+
+.container:hover {
+  background-color: grey;
+}
+
+.container:hover>svg {
+  fill: black
+}
