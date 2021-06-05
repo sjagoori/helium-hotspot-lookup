@@ -22,6 +22,7 @@ class MyDocument extends Document {
             name="keyword"
             content="dashboard, helium, hnt, crypto, cryptocurrency, mining"
           />
+          <meta name="theme-color" content="#1D1D1D" />
 
           <meta property="og:title" content="Helium Hotspot Dashboard" />
           <meta
