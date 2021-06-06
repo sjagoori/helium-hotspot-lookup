@@ -1,0 +1,27 @@
+.button {
+  margin-top: 20px;
+  line-height: 5;
+  padding: 10px 20px;
+  margin-right: 20px;
+  height: 20px;
+  color: #1D1D1D;
+  border: none;
+  border-radius: 7px;
+  transition: .3s;
+}
+
+.explorer {
+  background-color: #0ACE82;
+}
+
+.explorer:hover {
+  background-color: #0EAB6F
+}
+
+.wallet {
+  background-color: #EE694B;
+}
+
+.wallet:hover {
+  background-color: #C45A42;
+}
