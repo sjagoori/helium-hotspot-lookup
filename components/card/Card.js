@@ -4,14 +4,12 @@ import { motion } from 'framer-motion'
 import { fadeInUp, stagger } from '../../utils/animations'
 
 export default function Card(props) {
-  console.log(props);
-  console.log(styles);
   return (
     <motion.div
       variants={stagger}
       className={`${styles.container} ${styles[props.variant]}`}
     >
-      <Link href={'hotspot/' + props.data.address}>
+      <Link href={`/hotspot/${props.data.address}`} passHref>
         <a>
           <motion.p
             variants={fadeInUp}
