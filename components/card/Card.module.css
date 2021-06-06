@@ -3,5 +3,26 @@
   padding: 10px 30px;
   border-radius: 30px;
   margin: 0 auto;
-  margin-bottom: 30px;
+  margin: 30px 0px;
+}
+
+.secondary {
+  background-color: #1D1D1D;
+}
+
+.status {
+  background-color: #1D1D1D;
+  text-align: center;
+  width: max-content;
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: #1D1D1D;
+}
+
+.online {
+  background-color: #31C08A;
+}
+
+.offline {
+  background-color: #EE694B;
 }
