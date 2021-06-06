@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import React, { useState } from 'react';
 import Router from 'next/router';
 import LoadingScreen from '../components/loadingScreen/loadingScreen'
+import { AnimatePresence } from "framer-motion";
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,8 @@ function MyApp({ Component, pageProps }) {
     // handle error state here
   }
 
-  return loading ? <LoadingScreen /> : <Component {...pageProps} />
+  return loading ? <LoadingScreen /> : <AnimatePresence exitBeforeEnter><Component {...pageProps} /></AnimatePresence>
+
 }
 
 export default MyApp
