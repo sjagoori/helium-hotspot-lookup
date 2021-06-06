@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from '../header/Header'
 import Section from '../section/Section'
+import BookmarkButton from 'components/bookmarkButton/BookmarkButton';
 
 export default function Details(props) {
   return (
@@ -17,6 +18,7 @@ export default function Details(props) {
         <p>
           {props.data.geocode.long_city}, {props.data.geocode.long_country}
         </p>
+        <BookmarkButton data={props.data} />
       </Section>
     </>
   );
