@@ -10,7 +10,7 @@ export const stagger = {
 
 export const fadeInUp = {
   initial: {
-    y: 60,
+    y: 30,
     opacity: 0,
     transition: { duration: 0.6, ease: easing }
   },
