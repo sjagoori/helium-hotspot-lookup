@@ -1,10 +1,14 @@
 import styles from './LoadingScreen.module.css'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import { motion } from 'framer-motion'
 
 export default function LoadingScreen() {
   return (
-    <div className={styles.container}>
+    <motion.div
+      exit={{ opacity: 0 }}
+      className={styles.container}
+    >
       <CircularProgress />
-    </div>
+    </motion.div>
   )
 }

@@ -5,6 +5,8 @@ import Witness from "components/witness/Witness";
 import BackButton from 'components/backButton/backButton';
 import TopButton from 'components/topButton/topButton';
 import React from "react";
+import { motion } from 'framer-motion'
+import { stagger } from '../../utils/animations'
 
 export default function Post({ data }) {
   const router = useRouter();
@@ -13,7 +15,13 @@ export default function Post({ data }) {
   console.log(data);
 
   return (
-    <main>
+    <motion.main
+      initial='initial'
+      animate='animate'
+      exit={{ opacity: 0 }}
+      variants={stagger}
+      transition={{ delay: 0.2 }}
+    >
       <BackButton />
       <Details data={data.details.data} />
       <Rewards
@@ -22,7 +30,7 @@ export default function Post({ data }) {
       />
       <Witness data={data.witnesses.data} />
       <TopButton />
-    </main>
+    </motion.main >
   );
 }
 

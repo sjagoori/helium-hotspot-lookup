@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
+import { motion } from 'framer-motion'
+import { fadeInUp, stagger } from '../utils/animations'
 
 export default function Home() {
   const router = useRouter();
@@ -29,10 +31,19 @@ export default function Home() {
 
 
   return (
-    <div className={styles.container}>
-      <img src="./icons/icon-192x192.png" alt="Icon" width="50" height="50" />
-      <h1>Hotspot lookup </h1>
-      <form onSubmit={handleSubmit}>
+    <motion.div
+      initial='initial'
+      animate='animate'
+      exit={{ opacity: 0 }}
+      className={styles.container}
+      variants={stagger}>
+
+      <motion.img
+        variants={fadeInUp}
+        src="./icons/icon-192x192.png" alt="Icon" width="50" height="50" />
+
+      <motion.h1 variants={fadeInUp}>Hotspot lookup </motion.h1>
+      <motion.form variants={fadeInUp} onSubmit={handleSubmit}>
         {error ? <span className={styles.error}>{error}</span> : null}
         <input
           type="text"
@@ -42,7 +53,7 @@ export default function Home() {
           className={error ? styles.error : null}
         />
         <button type="submit">Search</button>
-      </form>
-    </div>
+      </motion.form>
+    </motion.div >
   );
 }
