@@ -37,7 +37,7 @@ export default function Home() {
         >
           <Header label="Bookmarks" />
           {Object.values(bookmarks).map((key, index) => {
-            return <Card data={key.data} key={index} />
+            return <Card data={key.data} key={index} variant="primary" />
           })}
         </motion.section>
       )
