@@ -27,7 +27,7 @@ export default function Home() {
 
   useEffect(() => {
     let bookmarks = JSON.parse(localStorage.getItem('bookmarks'))
-    if (bookmarks.length > 0) {
+    if (bookmarks != null && bookmarks.length > 0) {
       setSaves(
         <motion.section
           variants={stagger, delayedFadeIn}
@@ -44,8 +44,6 @@ export default function Home() {
     }
   }, [])
 
-
-  console.log(saves);
   return (
     <>
       <Head>
