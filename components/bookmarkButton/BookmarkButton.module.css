@@ -1,0 +1,24 @@
+.button {
+  padding: 10px 20px;
+  color: #FFF;
+  border: none;
+  border-radius: 7px;
+  transition: .3s;
+}
+
+.bookmark {
+  background-color: #474DFF;
+}
+
+.bookmark:hover {
+  background-color: #3F44D2;
+}
+
+
+.delete {
+  background-color: #EE694B;
+}
+
+.delete:hover {
+  background-color: #C45A42;
+}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from './BookmarkButton.module.css'
 
 export default function BookmarkButton(props) {
   const [disabled, setDisabled] = useState(false);
@@ -40,7 +41,7 @@ export default function BookmarkButton(props) {
 
   return (
     <form onSubmit={disabled ? handleDelete : handleBookmark}>
-      <button type="submit">{disabled ? "Delete" : "Save"}</button>
+      <button className={`${styles.button} ${disabled ? styles.delete : styles.bookmark}`} type="submit">{disabled ? "Delete" : "Bookmark"}</button>
     </form>
   )
 }
