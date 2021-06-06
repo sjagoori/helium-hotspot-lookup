@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Details from "components/details/Details";
 import Rewards from "components/rewards/Rewards";
 import Witness from "components/witness/Witness";
+import Links from 'components/links/Links'
 import BackButton from 'components/backButton/backButton';
 import TopButton from 'components/topButton/topButton';
 import React from "react";
@@ -27,6 +28,7 @@ export default function Post({ data }) {
         price={new Intl.NumberFormat("en-US").format(data.price.data.price / 100000000)}
       />
       <Witness data={data.witnesses.data} />
+      <Links data={data.details.data} />
       <TopButton />
     </motion.main >
   );
