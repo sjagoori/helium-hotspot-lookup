@@ -10,7 +10,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title>Helium hotspot</title>
           <link rel="icon" href="/favicon.svg" />
           <link
             rel="apple-touch-icon"
