@@ -1,6 +1,6 @@
 import Header from "../header/Header";
 import Section from '../section/Section'
-import styles from './Withness.module.css'
+import styles from './Witness.module.css'
 
 export default function Witness(props) {
 
