@@ -18,7 +18,7 @@ export default function Card(props) {
           </motion.p>
           <motion.h2 variants={fadeInUp}>{props.data.name}</motion.h2>
           <motion.p variants={fadeInUp}>{props.data.geocode.long_street + ", " + props.data.geocode.long_city}</motion.p>
-          <motion.p variants={fadeInUp}>Scale {props.data.reward_scale}</motion.p>
+          <motion.p variants={fadeInUp}>Scale: {props.data.reward_scale.toFixed(2)}</motion.p>
         </a>
       </Link>
     </motion.div>
