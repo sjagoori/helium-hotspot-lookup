@@ -34,7 +34,8 @@ export default function BookmarkButton(props) {
   }
 
   useEffect(() => {
-    if (Object.values(JSON.parse(localStorage.getItem("bookmarks"))).find(key => key.label == props.data.name)) {
+    let bookmarks = JSON.parse(localStorage.getItem("bookmarks"))
+    if (bookmarks != null && Object.values(bookmarks).find(key => key.label == props.data.name)) {
       setDisabled(true)
     }
   })
