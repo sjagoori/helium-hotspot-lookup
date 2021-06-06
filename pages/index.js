@@ -2,12 +2,14 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { motion } from 'framer-motion'
-import { fadeInUp, stagger } from '../utils/animations'
+import { delayedFadeIn, fadeInUp, stagger } from '../utils/animations'
 import Head from 'next/head'
+import Header from '../components/header/Header'
+import Card from '../components/card/Card'
 
 export default function Home() {
   const router = useRouter();
-  const [saves, setSaves] = useState([]);
+  const [saves, setSaves] = useState();
   const [error, setError] = useState(null)
 
   function handleSubmit(e) {
@@ -24,24 +26,38 @@ export default function Home() {
   }
 
   useEffect(() => {
-    Object.values(localStorage).map(key => {
-      setSaves(saves => saves = localStorage[key])
-    });
-    console.log(saves);
-  })
+    let bookmarks = JSON.parse(localStorage.getItem('bookmarks'))
+    if (bookmarks.length > 0) {
+      setSaves(
+        <motion.section
+          variants={stagger, delayedFadeIn}
+          initial='initial'
+          animate='animate'
+          className={styles.bookmarkContainer}
+        >
+          <Header label="Bookmarks" />
+          {Object.values(bookmarks).map((key, index) => {
+            return <Card data={key.data} key={index} />
+          })}
+        </motion.section>
+      )
+    }
+  }, [])
 
 
+  console.log(saves);
   return (
     <>
       <Head>
         <title>Helium hotspot</title>
       </Head>
-      <motion.div
+      <motion.section
         initial='initial'
         animate='animate'
         exit={{ opacity: 0 }}
+        variants={stagger}
         className={styles.container}
-        variants={stagger}>
+      >
 
         <motion.img
           variants={fadeInUp}
@@ -59,7 +75,8 @@ export default function Home() {
           />
           <button type="submit">Search</button>
         </motion.form>
-      </motion.div >
+        {saves}
+      </motion.section >
     </>
   );
 }

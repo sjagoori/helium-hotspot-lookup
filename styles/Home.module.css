@@ -1,4 +1,6 @@
 .container {
+  width: 310px;
+  margin: 0 auto;
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
@@ -36,4 +38,15 @@
 
 .container button:hover {
   background-color: #3F44D2;
+}
+
+.bookmarkContainer {
+  width: 300px;
+  position: absolute;
+  top: 85vh;
+}
+
+.bookmarkContainer h1 {
+  margin: 0 auto;
+  margin-bottom: 2rem;
 }
