@@ -2,6 +2,11 @@
   height: 100vh;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.container .loader {
+  color: #0ACE82;
 }
