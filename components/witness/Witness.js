@@ -3,19 +3,6 @@ import Section from '../section/Section'
 import styles from './Witness.module.css'
 
 export default function Witness(props) {
-
-  function handleBookmark(e) {
-    e.preventDefault();
-
-    window.localStorage.setItem(
-      e.target[0].value ? e.target[0].value : hotspot.name,
-      JSON.stringify({
-        label: e.target[0].value ? e.target[0].value : hotspot.name,
-        data: hotspot,
-      })
-    );
-  }
-
   return (
     <Section>
       <Header label="Witness" />
