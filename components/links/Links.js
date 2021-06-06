@@ -8,11 +8,11 @@ export default function Links(props) {
     <Section>
       <Header label="Links" />
       <a
-        href={"https://explorer.helium.com/hotspots" + props.data.address}
+        href={"https://explorer.helium.com/hotspots/" + props.data.address}
         className={`${styles.button} ${styles.explorer}`}
       >Explorer</a>
       <a
-        href={"https://explorer.helium.com/accounts" + props.data.owner}
+        href={"https://explorer.helium.com/accounts/" + props.data.owner}
         className={`${styles.button} ${styles.wallet}`}
       >Wallet</a>
     </Section>
