@@ -12,8 +12,6 @@ export default function Post({ data }) {
   const router = useRouter();
   const { address } = router.query;
 
-  console.log(data);
-
   return (
     <motion.main
       initial='initial'
