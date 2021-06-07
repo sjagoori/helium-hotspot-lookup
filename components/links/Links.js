@@ -3,7 +3,6 @@ import Header from '../header/Header'
 import styles from './Links.module.css'
 
 export default function Links(props) {
-  console.log(props);
   return (
     <Section>
       <Header label="Links" />
