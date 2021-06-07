@@ -16,9 +16,14 @@ export default function Card(props) {
             className={`${styles.status} ${props.data.status.online == "online" ? styles.online : styles.offline}`}>
             {props.data.status.online ? "Online" : "Offline"}
           </motion.p>
+
+          {props.data.status.listen_addrs != null && props.data.status.listen_addrs[0].startsWith('/p2p/') ? <motion.span
+            variants={fadeInUp}
+            className={`${styles.status} ${styles.offline}`}>Relayed</motion.span> : null}
+
           <motion.h2 variants={fadeInUp}>{props.data.name}</motion.h2>
           <motion.p variants={fadeInUp}>{props.data.geocode.long_street + ", " + props.data.geocode.long_city}</motion.p>
-          <motion.p variants={fadeInUp}>Scale: {props.data.reward_scale.toFixed(2)}</motion.p>
+          {props.data.reward_scale != null ? <motion.p variants={fadeInUp}>Scale: {props.data.reward_scale.toFixed(2)}</motion.p> : null}
         </a>
       </Link>
     </motion.div>
