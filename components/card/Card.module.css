@@ -20,6 +20,7 @@
 .status {
   background-color: #1D1D1D;
   text-align: center;
+  max-height: 75px;
   width: max-content;
   padding: 5px 10px;
   border-radius: 20px;
@@ -32,4 +33,10 @@
 
 .offline {
   background-color: #EE694B;
+}
+
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
