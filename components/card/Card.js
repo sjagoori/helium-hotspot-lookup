@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { fadeInUp, stagger } from '../../utils/animations'
 
 export default function Card(props) {
+  console.log(props.data.status.online);
   return (
     <motion.div
       variants={stagger}
