@@ -14,7 +14,7 @@ export default function Card(props) {
           <motion.p
             variants={fadeInUp}
             className={`${styles.status} ${props.data.status.online == "online" ? styles.online : styles.offline}`}>
-            {props.data.status.online ? "Online" : "Offline"}
+            {props.data.status.online == "online" ? "Online" : "Offline"}
           </motion.p>
 
           {props.data.status.listen_addrs != null && props.data.status.listen_addrs[0].startsWith('/p2p/') ? <motion.span
